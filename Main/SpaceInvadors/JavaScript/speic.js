@@ -35,6 +35,7 @@
     let alienRows = 2;
     let alienColumns = 3;
     let alienCount = 0; //number of aliens to defeat
+    let alienVelocityx = 1; //alien moving speed
 
     window.onload = function () {
         board = document.getElementById("board");
@@ -75,6 +76,12 @@
         for (let i = 0; i < alienArray.length; i++) {
             let alien = alienArray[i];
             if (alien.alive) {
+                alien.x += alienVelocityx;
+
+                //if alien touvhes the borders
+                if (alien.x + alien.width >= board.width || alien.x <= 0) {
+                    alienVelcityx *= -1;
+                }
                 context.drawImage(alien.img, alien.x, alien.y, alien.width, alien.height);
             }
         }
