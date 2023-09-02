@@ -88,7 +88,7 @@ ul li::before {
     height: 28px;
     width: 28px;
     border-radius: 50%;
-    background-image: url(/Mein/bilder/unchecked.png); /* Customize this URL */
+    background-image: url(../Pictures/unchecked.png); /* Customize this URL */
     background-size: cover;
     background-position: center;
     top: 12px;
@@ -103,7 +103,7 @@ ul li.checked {
 
 /* Style for the checkbox icon of checked list items */
 ul li.checked::before {
-    background-image: url(/Mein/bilder/checked.png); /* Customize this URL */
+    background-image: url(../Pictures/checked.png); /* Customize this URL */
 }
 
 /* Style for the delete button on list items */
