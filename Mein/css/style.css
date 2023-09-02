@@ -1,16 +1,21 @@
-*{
+/* Reset default margin, padding, and box-sizing behavior for all elements */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: JetBrainsMono-Light;
 }
-.container{
+
+/* Style for the main container */
+.container {
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(135deg, #153677, #4e085f);
     padding: 10px;
 }
-.todo-app{
+
+/* Style for the to-do app container */
+.todo-app {
     width: 100%;
     max-width: 540px;
     background: #fff;
@@ -18,18 +23,23 @@
     padding: 40px 30px 70px;
     border-radius: 10px;
 }
-.todo-app h2{
+
+/* Style for the to-do app title */
+.todo-app h2 {
     color: #002765;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-
 }
-.todo-app img{
+
+/* Style for the to-do app icon */
+.todo-app img {
     width: 30px;
     margin-left: 10px;
 }
-.row{
+
+/* Style for rows containing tasks */
+.row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,24 +48,30 @@
     padding-left: 20px;
     margin-bottom: 25px;
 }
-input{
+
+/* Style for input elements */
+input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
     padding: 10px;
 }
-button{
+
+/* Style for buttons */
+button {
     border: none;
     outline: none;
     padding: 16px 50px;
     background: #ff5945;
-    color: fff;
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
     border-radius: 40px;
 }
-ul li{
+
+/* Style for list items */
+ul li {
     list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
@@ -63,26 +79,34 @@ ul li{
     cursor: pointer;
     position: relative;
 }
-ul li::before{
+
+/* Style for the checkbox icon before list items */
+ul li::before {
     content: '';
     position: absolute;
     height: 28px;
     width: 28px;
     border-radius: 50%;
-    background-image: url(/Mein/bilder/unchecked.png);
+    background-image: url(/Mein/bilder/unchecked.png); /* Customize this URL */
     background-size: cover;
     background-position: center;
     top: 12px;
     left: 8px;
 }
-ul li.checked{
+
+/* Style for checked list items */
+ul li.checked {
     color: #555;
     text-decoration: line-through;
 }
-ul li.checked::before{
-    background-image: url(/Mein/bilder/checked.png);
+
+/* Style for the checkbox icon of checked list items */
+ul li.checked::before {
+    background-image: url(/Mein/bilder/checked.png); /* Customize this URL */
 }
-ul li span{
+
+/* Style for the delete button on list items */
+ul li span {
     position: absolute;
     right: 0;
     top: 5px;
@@ -90,10 +114,12 @@ ul li span{
     height: 40px;
     font-size: 22px;
     color: #555;
-    line-height: 40px; 
+    line-height: 40px;
     text-align: center;
     border-radius: 50%;
 }
-ul li span:hover{
+
+/* Style for the delete button on hover */
+ul li span:hover {
     background: #edeef0;
 }
