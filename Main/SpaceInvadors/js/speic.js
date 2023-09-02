@@ -48,13 +48,13 @@
 
         //Load images
         shipImg = new Image();
-        shipImg.src = "/Mein/bilder/ship.png";
+        shipImg.src = "../bilder/ship.png";
         shipImg.onload = function () {
             context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
         }
 
         alienImg = new Image();
-        alienImg.src = "/Mein/bilder/alien-cyan.png";
+        alienImg.src = "../bilder/alien-cyan.png";
         alienImg.onload = function () {
         createAliens(); // Call createAliens only when the alien image is loaded.
         };
