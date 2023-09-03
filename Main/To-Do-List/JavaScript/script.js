@@ -63,10 +63,10 @@ function showTask() {
 // Load and display the saved tasks when the page loads
 showTask();
 
-const menuToggel = document.querySelector('.toggle')
+const toggleButton = document.querySelector('.toggle');
+const menu = document.querySelector('.menu');
 
-menuToggel.addEventListener('click', () => {
-    // Your event handling code here
-    menuToggel.classList.toggle('active')
-  });
+toggleButton.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
   
