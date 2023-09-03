@@ -59,7 +59,11 @@
         shipImg.src = "../pictures/ship.png";
         shipImg.onload = function () {
             context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
-        }
+        };
+        shipImg.onerror = function () {
+            console.error("Failed to load ship image.");
+        };
+
 
         alienImg = new Image();
         alienImg.src = "../pictures/alien-cyan.png";
