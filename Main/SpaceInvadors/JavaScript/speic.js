@@ -1,15 +1,15 @@
     //board
     let tileSize = 32;
-    let rows = 16;
-    let columns = 16;
+    let rows = 30;
+    let columns = 30;
 
     let board;
-    let boardWidth = tileSize * columns; // 32 * 16
-    let boardHeight = tileSize * rows; // 32 * 16
+    let boardWidth = tileSize * columns;
+    let boardHeight = tileSize * rows;
     let context;
 
     //ship
-    let shipWidth = tileSize*2;
+    let shipWidth = tileSize * 2;
     let shipHeight = tileSize;
     let shipX = tileSize * columns/2 - tileSize;
     let shipY = tileSize * rows - tileSize*2;
@@ -19,7 +19,7 @@
         y : shipY,
         width : shipWidth,
         height : shipHeight,
-    }
+    };
 
     let shipImg;
     let shipVelocityx = tileSize; //ship moving speed
@@ -59,22 +59,24 @@
         shipImg.src = "../pictures/ship.png";
         shipImg.onload = function () {
             context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
-        };
+        }
         shipImg.onerror = function () {
             console.error("Failed to load ship image.");
-        };
+        }
 
 
         alienImg = new Image();
-        alienImg.src = "../pictures/alien-cyan.png";
+        alienImg.src = "../pictures/alien.png";
         alienImg.onload = function () {
         createAliens(); // Call createAliens only when the alien image is loaded.
-        };
-
+        }
+        alienImg.onerror = function () {
+            console.error("Failed to load ship image.");
+        }
         requestAnimationFrame(update);
         document.addEventListener("keydown", moveShip);
         document.addEventListener("keyup", shoot);
-    }
+    };
 
     function update() {
         requestAnimationFrame(update);
@@ -111,7 +113,7 @@
                     alert("Game Over");
                 }
             }
-        }
+        };
 
         //bullets
         for (let i = 0; i < bulletArray.length; i++){
@@ -153,7 +155,7 @@
         context.font="16px courier";
         context.fillText("Score: " + score, 5, 20);
 
-    }
+    };
     
 
     function moveShip(e) {
@@ -167,24 +169,34 @@
         else if (e.code == "ArrowRight" && ship.x + shipVelocityx + ship.width <= board.width) {
             ship.x += shipVelocityx; //move right one tile
         }
-    }
+    };
     
     function createAliens() {
+        const alienGapX = 20; // Horizontal gap between aliens
+        const alienGapY = 20; // Vertical gap between aliens
+    
         for (let c = 0; c < alienColumns; c++) {
             for (let r = 0; r < alienRows; r++) {
+                // Calculate the position of the alien
+                let alienX = c * (alienWidth + alienGapX) + alienGapX;
+                let alienY = r * (alienHeight + alienGapY) + alienGapY;
+    
                 let alien = {
-                    img : alienImg,
-                    x : alienX + c*alienWidth,
-                    y : alienY + r*alienHeight,
-                    width : alienWidth,
-                    height : alienHeight,
-                    alive : true,
-                }
+                    img: alienImg,
+                    x: alienX,
+                    y: alienY,
+                    width: alienWidth,
+                    height: alienHeight,
+                    alive: true,
+                };
+    
                 alienArray.push(alien);
             }
         }
         alienCount = alienArray.length;
     }
+    
+    
 
     function shoot(e) {
         if (gameOver) {
@@ -202,7 +214,7 @@
             }
             bulletArray.push(bullet);
         }
-    }
+    };
 
     function detectCollison(a, b) {
         return a.x < b.x +b.width &&    //a's top left corner is to the left of b's top right corner
@@ -210,4 +222,4 @@
                 a.y < b.y + b.height &&     //a's top left corner doesn't reach b's bottom left corner
                 a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
         
-    }
+    };
