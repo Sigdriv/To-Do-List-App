@@ -175,26 +175,47 @@
         const alienGapX = 20; // Horizontal gap between aliens
         const alienGapY = 20; // Vertical gap between aliens
     
+        const alienGrid = []; // A grid to track occupied positions
+    
         for (let c = 0; c < alienColumns; c++) {
             for (let r = 0; r < alienRows; r++) {
                 // Calculate the position of the alien
                 let alienX = c * (alienWidth + alienGapX) + alienGapX;
                 let alienY = r * (alienHeight + alienGapY) + alienGapY;
     
-                let alien = {
-                    img: alienImg,
-                    x: alienX,
-                    y: alienY,
-                    width: alienWidth,
-                    height: alienHeight,
-                    alive: true,
-                };
+                // Check if the current position is already occupied by another alien
+                let positionOccupied = false;
+                for (let i = 0; i < alienArray.length; i++) {
+                    let existingAlien = alienArray[i];
+                    if (
+                        existingAlien.x === alienX &&
+                        existingAlien.y === alienY
+                    ) {
+                        positionOccupied = true;
+                        break;
+                    }
+                }
     
-                alienArray.push(alien);
+                // If the position is not occupied, create a new alien
+                if (!positionOccupied) {
+                    let alien = {
+                        img: alienImg,
+                        x: alienX,
+                        y: alienY,
+                        width: alienWidth,
+                        height: alienHeight,
+                        alive: true,
+                    };
+                    alienArray.push(alien);
+    
+                    // Update the grid to mark this position as occupied
+                    alienGrid.push({ x: alienX, y: alienY });
+                }
             }
         }
         alienCount = alienArray.length;
     }
+    
     
     
 
