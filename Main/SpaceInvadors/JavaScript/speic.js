@@ -134,6 +134,11 @@
                 }
                 context.drawImage(alien.img, alien.x, alien.y, alien.width, alien.height);
             };
+            if (alien.y >= ship.y) {
+                for (let i = 0; i < 1; i++) {
+                    gameOverAlert();
+                };
+            };
         };
 
         //bullets
@@ -284,7 +289,3 @@
             console.error("Game Over")
         }
     };
-
-    if (alien.y >= ship.y) {
-        gameOverAlert();
-        };
