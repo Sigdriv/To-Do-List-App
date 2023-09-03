@@ -43,6 +43,7 @@
 
     let score = 0;
     let gameOver = false;
+    let level = 0;
 
     const alienColors = [
     "../pictures/alien-cyan.png",
@@ -174,12 +175,15 @@
             alienArray = []; //clear aliens
             bulletArray = []; //clear bullets
             createAliens();
+            level++;
         }
 
         //score
         context.fillStyle="white";
         context.font="16px courier";
         context.fillText("Score: " + score, 5, 20);
+        context.fillText("Aliens: " + alienCount, 5, 40);
+        context.fillText("Level: " + level, 5, 60);
 
     };
     
