@@ -35,7 +35,7 @@
     let alienRows = 2;
     let alienColumns = 3;
     let alienCount = 0; //number of aliens to defeat
-    let alienVelocityx = 0.5; //alien moving speed
+    let alienVelocityx = 1; //alien moving speed
 
     //bollets
     let bulletArray = [];
