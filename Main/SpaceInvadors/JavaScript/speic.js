@@ -44,6 +44,28 @@
     let score = 0;
     let gameOver = false;
 
+    const alienColors = [
+    "../pictures/alien-cyan.png",
+     "../pictures/alien-magenta.png",
+     "../pictures/alien-yellow.png",
+     "../pictures/alien.png",
+     // Add more colors here as needed
+    ];
+
+    // Rest of your code...
+
+    window.onload = function () {
+        // Your existing code...
+    };
+
+    function createAliens() {
+        // Your existing code...
+
+        // Modify the code within this function as described in the previous response
+    }
+
+    // Rest of your code...
+
     window.onload = function () {
         board = document.getElementById("board");
         board.width = boardWidth;
@@ -65,14 +87,18 @@
         }
 
 
-        alienImg = new Image();
-        alienImg.src = "../pictures/alien.png";
-        alienImg.onload = function () {
-        createAliens(); // Call createAliens only when the alien image is loaded.
-        }
-        alienImg.onerror = function () {
-            console.error("Failed to load ship image.");
-        }
+        // alienImg = new Image();
+        // alienImg.src = "../pictures/alien.png";
+        // alienImg.onload = function () {
+        // createAliens(); // Call createAliens only when the alien image is loaded.
+        // }
+        // alienImg.onerror = function () {
+        //     console.error("Failed to load ship image.");
+        // }
+
+     
+
+
         requestAnimationFrame(update);
         document.addEventListener("keydown", moveShip);
         document.addEventListener("keyup", shoot);
@@ -172,49 +198,58 @@
     };
     
     function createAliens() {
-        const alienGapX = 20; // Horizontal gap between aliens
-        const alienGapY = 20; // Vertical gap between aliens
-    
-        const alienGrid = []; // A grid to track occupied positions
-    
-        for (let c = 0; c < alienColumns; c++) {
-            for (let r = 0; r < alienRows; r++) {
-                // Calculate the position of the alien
-                let alienX = c * (alienWidth + alienGapX) + alienGapX;
-                let alienY = r * (alienHeight + alienGapY) + alienGapY;
-    
-                // Check if the current position is already occupied by another alien
-                let positionOccupied = false;
-                for (let i = 0; i < alienArray.length; i++) {
-                    let existingAlien = alienArray[i];
-                    if (
-                        existingAlien.x === alienX &&
-                        existingAlien.y === alienY
-                    ) {
-                        positionOccupied = true;
-                        break;
-                    }
-                }
-    
-                // If the position is not occupied, create a new alien
-                if (!positionOccupied) {
-                    let alien = {
-                        img: alienImg,
-                        x: alienX,
-                        y: alienY,
-                        width: alienWidth,
-                        height: alienHeight,
-                        alive: true,
-                    };
-                    alienArray.push(alien);
-    
-                    // Update the grid to mark this position as occupied
-                    alienGrid.push({ x: alienX, y: alienY });
+    const alienGapX = 20; // Horizontal gap between aliens
+    const alienGapY = 20; // Vertical gap between aliens
+
+    const alienGrid = []; // A grid to track occupied positions
+
+    for (let c = 0; c < alienColumns; c++) {
+        for (let r = 0; r < alienRows; r++) {
+            // Calculate the position of the alien
+            let alienX = c * (alienWidth + alienGapX) + alienGapX;
+            let alienY = r * (alienHeight + alienGapY) + alienGapY;
+
+            // Check if the current position is already occupied by another alien
+            let positionOccupied = false;
+            for (let i = 0; i < alienArray.length; i++) {
+                let existingAlien = alienArray[i];
+                if (
+                    existingAlien.x === alienX &&
+                    existingAlien.y === alienY
+                ) {
+                    positionOccupied = true;
+                    break;
                 }
             }
+
+            // If the position is not occupied, create a new alien with a random color
+            if (!positionOccupied) {
+                // Randomly select an alien color from the array
+                const randomColorIndex = Math.floor(Math.random() * alienColors.length);
+                const randomColor = alienColors[randomColorIndex];
+
+                let alien = {
+                    img: new Image(),
+                    x: alienX,
+                    y: alienY,
+                    width: alienWidth,
+                    height: alienHeight,
+                    alive: true,
+                };
+
+                // Set the src of the alien image to the randomly selected color
+                alien.img.src = randomColor;
+
+                alienArray.push(alien);
+
+                // Update the grid to mark this position as occupied
+                alienGrid.push({ x: alienX, y: alienY });
+            }
         }
-        alienCount = alienArray.length;
     }
+    alienCount = alienArray.length;
+}
+
 
     function shoot(e) {
         if (gameOver) {
