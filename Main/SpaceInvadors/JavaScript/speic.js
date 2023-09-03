@@ -53,20 +53,6 @@
      // Add more colors here as needed
     ];
 
-    // Rest of your code...
-
-    window.onload = function () {
-        // Your existing code...
-    };
-
-    function createAliens() {
-        // Your existing code...
-
-        // Modify the code within this function as described in the previous response
-    }
-
-    // Rest of your code...
-
     window.onload = function () {
         board = document.getElementById("board");
         board.width = boardWidth;
@@ -289,5 +275,5 @@
     function gameOverAlert() {
         gameOver = true;
         alert('Game Over, try again!');
-        console.error("Game Over")
+        console.warn("Game Over")
     };
