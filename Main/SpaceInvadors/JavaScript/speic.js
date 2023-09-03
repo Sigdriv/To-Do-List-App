@@ -284,8 +284,6 @@
 
     function gameOverAlert() {
         gameOver = true;
-        for (let i = 0; i < 1; i++) {
-            alert('Game Over, try again!');
-            console.error("Game Over")
-        }
+        alert('Game Over, try again!');
+        console.error("Game Over")
     };
