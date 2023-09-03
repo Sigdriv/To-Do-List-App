@@ -44,6 +44,7 @@
     let score = 0;
     let gameOver = false;
     let level = 0;
+    let gameStarted = false;
 
     const alienColors = [
     "../pictures/alien-cyan.png",
@@ -58,6 +59,13 @@
         board.width = boardWidth;
         board.height = boardHeight;
         context = board.getContext("2d"); //used for drawing on the board
+
+        document.addEventListener('keydown', function (e) {
+            if (e.code == "Space") {
+                gameStarted = true;
+                context.clearRect(0, 0, board.width, board.height);
+            }
+        });
 
         //draw initial ship
         // context.fillStyle="green";
@@ -93,6 +101,17 @@
 
     function update() {
         requestAnimationFrame(update);
+
+        if (!gameStarted) {
+
+            context.fillStyle="white";
+            context.font="50px courier";
+            context.fillText('Press Space to start', 500, 450);
+
+            context.font='30px courier'
+            context.fillText("Press Left and Right to move", 550, 500);
+            return;
+        };
 
         if (gameOver) {
             return;
