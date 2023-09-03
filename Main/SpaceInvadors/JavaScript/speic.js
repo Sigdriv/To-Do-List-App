@@ -43,6 +43,7 @@
 
     let score = 0;
     let gameOver = false;
+    let level = 0;
 
     const alienColors = [
     "../pictures/alien-cyan.png",
@@ -51,20 +52,6 @@
      "../pictures/alien.png",
      // Add more colors here as needed
     ];
-
-    // Rest of your code...
-
-    window.onload = function () {
-        // Your existing code...
-    };
-
-    function createAliens() {
-        // Your existing code...
-
-        // Modify the code within this function as described in the previous response
-    }
-
-    // Rest of your code...
 
     window.onload = function () {
         board = document.getElementById("board");
@@ -174,12 +161,15 @@
             alienArray = []; //clear aliens
             bulletArray = []; //clear bullets
             createAliens();
+            level++;
         }
 
         //score
         context.fillStyle="white";
         context.font="16px courier";
         context.fillText("Score: " + score, 5, 20);
+        context.fillText("Aliens: " + alienCount, 5, 40);
+        context.fillText("Level: " + level, 5, 60);
 
     };
     
@@ -285,5 +275,5 @@
     function gameOverAlert() {
         gameOver = true;
         alert('Game Over, try again!');
-        console.error("Game Over")
+        console.warn("Game Over")
     };
