@@ -101,7 +101,7 @@
 
         requestAnimationFrame(update);
         document.addEventListener("keydown", moveShip);
-        document.addEventListener("keyup", shoot);
+        document.addEventListener("keydown", shoot);
     };
 
     function update() {
@@ -133,12 +133,7 @@
                     }
                 }
                 context.drawImage(alien.img, alien.x, alien.y, alien.width, alien.height);
-
-                if (alien.y >= ship.y) {
-                    gameOver = true;
-                    alert("Game Over");
-                }
-            }
+            };
         };
 
         //bullets
@@ -276,3 +271,20 @@
                 a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
         
     };
+
+    button = document.getElementById('button');
+    button.addEventListener('click', function() {
+        gameOverAlert();
+    });
+
+    function gameOverAlert() {
+        gameOver = true;
+        for (let i = 0; i < 1; i++) {
+            alert('Game Over, try again!');
+            console.error("Game Over")
+        }
+    };
+
+    if (alien.y >= ship.y) {
+        gameOverAlert();
+        };
