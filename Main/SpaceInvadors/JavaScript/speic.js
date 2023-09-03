@@ -1,7 +1,7 @@
     //board
     let tileSize = 32;
     let rows = 30;
-    let columns = 40;
+    let columns = 50;
 
     let board;
     let boardWidth = tileSize * columns;
