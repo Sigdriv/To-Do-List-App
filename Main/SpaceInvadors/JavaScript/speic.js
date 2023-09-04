@@ -45,6 +45,7 @@
     let gameOver = false;
     let level = 0;
     let gameStarted = false;
+    let alienKilled = 0;
 
     const alienColors = [
     "../pictures/alien-cyan.png",
@@ -96,7 +97,7 @@
 
         requestAnimationFrame(update);
         document.addEventListener("keydown", moveShip);
-        document.addEventListener("keyup", shoot);
+        document.addEventListener("keydown", shoot);
     };
 
     function update() {
@@ -161,6 +162,7 @@
                     bullet.used = true;
                     alien.alive = false;
                     alienCount--;
+                    alienKilled++;
                     score += 50;
                 }
             }
@@ -187,8 +189,9 @@
         context.fillStyle="white";
         context.font="16px courier";
         context.fillText("Score: " + score, 5, 20);
-        context.fillText("Aliens: " + alienCount, 5, 40);
-        context.fillText("Level: " + level, 5, 60);
+        context.fillText("Aliens left: " + alienCount, 5, 40);
+        context.fillText("Aliens killed: " + alienKilled, 5, 60);
+        context.fillText("Level: " + level, 5, 80);
 
     };
     
@@ -293,6 +296,6 @@
 
     function gameOverAlert() {
         gameOver = true;
-        alert('Game Over, try again!');
+        alert('Game Over, try again! Du klarte å få ' + score + ' poeng! Du kom til level ' + level + '!');
         console.warn("Game Over")
     };
