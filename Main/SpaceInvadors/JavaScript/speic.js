@@ -96,7 +96,7 @@
 
         requestAnimationFrame(update);
         document.addEventListener("keydown", moveShip);
-        document.addEventListener("keyup", shoot);
+        document.addEventListener("keydown", shoot);
     };
 
     function update() {
